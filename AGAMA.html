@@ -56,7 +56,7 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-header">
-                <h5>Jumlah Kendaraan Bermotor</h5>
+                <h5>Jumlah Wajib Pajak Bumi dan Bangunan menurut Kecamatan</h5>
             </div>
             <div class="card-body">
                 <div id="chart"></div>
@@ -98,23 +98,46 @@
 
     <script>
         var options = {
-            series: [60.039, 5.533, 14.241, 89.043],
+            series: [{
+                data: [8.507, 4.425, 7.716, 21.428, 9.203, 8.782, 3.953, 2.183, 3.119, 3.614, 5.779, 3.967, 5.568, 9.002]
+            }],
             chart: {
-                type: 'donut',
-                width: 400
+                type: 'bar',
+                height: 350
             },
-            labels: ['Mobil', 'Bus', 'Lainnya', 'Motor'],
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 200
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
+            plotOptions: {
+                bar: {
+                    borderRadius: 4,
+                    horizontal: true,
                 }
-            }]
+            },
+            dataLabels: {
+                enabled: false
+            },
+            xaxis: {
+                categories: ['Mantrijeron', 'Kraton', 'Mergangsan', 'Umbulharjo', 'Kotagede',
+                'Gondokusuman', 'Danurejan', 'Pakualaman', 'Gondomanan', 'Ngampilan',
+                'Wirobrajan', 'Gedongtengen', 'Jetis', 'Tegalrejo'],
+                title: {
+                    text: 'Jumlah (ribu)'
+                }
+            },
+            yaxis: {
+                title: {
+                    text: 'Kecamatan'
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                formatter: function (val) {
+                    return val;
+                },
+                offsetY: -0,
+                style: {
+                    fontSize: '12px',
+                    colors: ["#304758"]
+                }
+            },
         };
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);

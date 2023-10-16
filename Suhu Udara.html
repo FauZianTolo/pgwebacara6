@@ -56,7 +56,7 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-header">
-                <h5>Jumlah Kendaraan Bermotor</h5>
+                <h5>Suhu Udara Menurut Bulan</h5>
             </div>
             <div class="card-body">
                 <div id="chart"></div>
@@ -98,23 +98,76 @@
 
     <script>
         var options = {
-            series: [60.039, 5.533, 14.241, 89.043],
-            chart: {
-                type: 'donut',
-                width: 400
-            },
-            labels: ['Mobil', 'Bus', 'Lainnya', 'Motor'],
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 200
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
+            series: [
+                {
+                    name: "High - 2023",
+                    data: [31.1, 30.9, 30.8, 31, 32, 30.4, 30.4, 30.3, 30.4, 29.1, 29.8, 30.2]
+                },
+                {
+                    name: "Rata- Rata",
+                    data: [26.6 ,26.4, 26.2, 26.0, 26.9, 25.8, 25.5, 25.7, 26.2, 25.3, 25.6, 26.0]
+                },
+                {
+                    name: "Low - 2023",
+                    data: [23.4, 23.5, 23.4, 23, 23.6, 22.6, 21.9, 22.4, 24.2, 22.9, 22.8, 23]
                 }
-            }]
+            ],
+            chart: {
+                height: 350,
+                type: 'line',
+                dropShadow: {
+                    enabled: true,
+                    color: '#000',
+                    top: 18,
+                    left: 7,
+                    blur: 10,
+                    opacity: 0.2
+                },
+                toolbar: {
+                    show: false
+                }
+            },
+            colors: ['#00FF00', '#545454', '#FF0000'],
+            dataLabels: {
+                enabled: true,
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            title: {
+                text: 'Average High & Low Temperature',
+                align: 'left'
+            },
+            grid: {
+                borderColor: '#e7e7e7',
+                row: {
+                    colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                    opacity: 0.5
+                },
+            },
+            markers: {
+                size: 1
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+                title: {
+                    text: 'Bulan'
+                }
+            },
+            yaxis: {
+                title: {
+                    text: 'Temperatur'
+                },
+                min: 5,
+                max: 40
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'right',
+                floating: true,
+                offsetY: -25,
+                offsetX: -5
+            }
         };
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
